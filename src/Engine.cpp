@@ -2,7 +2,6 @@
 
 Engine::Engine()
 {
-	//Get the screen resolution
 	Vector2f resolution;
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
