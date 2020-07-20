@@ -8,10 +8,16 @@ void Engine::input()
 		if (event.type == Event::KeyPressed)
 		{
 			//Handle the player quitting
-			if (Keyboard::isKeyPressed(Keyboard::Escape))
+			if (Keyboard::isKeyPressed(Keyboard::Escape) && state == State::MENU)
 			{
 				m_Window.close();
 			}
+
+			if (Keyboard::isKeyPressed(Keyboard::Return) && state == State::MENU)
+			{
+				state = State::WHITE_TURN;
+			}
+
 		}
 	}
 }

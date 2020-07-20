@@ -153,12 +153,16 @@
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Pawn.cpp" />
+    <ClCompile Include="src\Piece.cpp" />
     <ClCompile Include="src\TextureHolder.cpp" />
     <ClCompile Include="src\Update.cpp" />
     <ClCompile Include="src\UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine.h" />
+    <ClInclude Include="src\Pawn.h" />
+    <ClInclude Include="src\Piece.h" />
     <ClInclude Include="src\TextureHolder.h" />
     <ClInclude Include="src\UserInterface.h" />
   </ItemGroup>

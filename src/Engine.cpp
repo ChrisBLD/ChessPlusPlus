@@ -7,12 +7,16 @@ Engine::Engine()
 	resolution.y = VideoMode::getDesktopMode().height;
 
 	m_Window.create(VideoMode(resolution.x, resolution.y), "Chess++", Style::Fullscreen);
+
 }
 
 void Engine::run()
 {
 	//Timing 
 	Clock clock;
+
+	//Start in the MENU state
+	state = State::MENU;
 	
 	while (m_Window.isOpen())
 	{

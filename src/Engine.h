@@ -8,6 +8,15 @@ using namespace sf;
 class Engine
 {
 private:
+
+	//Game state enumeration
+	enum class State {
+		MENU, WHITE_TURN, BLACK_TURN, MID_TURN, CHECKMATE, PAUSED
+	};
+
+	//Game state
+	State state;
+
 	//The Texture Holder
 	TextureHolder textureHolder;
 
