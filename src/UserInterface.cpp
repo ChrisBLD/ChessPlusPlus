@@ -12,8 +12,9 @@ UserInterface::UserInterface()
 
 	m_SpriteBoard.setPosition((resolution.x / 4.0f) + resolution.x / 2.0f, resolution.y / 2.0f);
 
-	m_MenuBackground.setTexture(TextureHolder::GetTexture("assets/mainmenu.png"));
+	m_PauseBackground.setTexture(TextureHolder::GetTexture("assets/pausemenu.png"));
 
+	m_MainMenu.init(resolution);
 }
 
 Sprite UserInterface::getSpriteBoard()
@@ -21,7 +22,13 @@ Sprite UserInterface::getSpriteBoard()
 	return m_SpriteBoard;
 }
 
-Sprite UserInterface::getMenuBackground()
+
+Sprite UserInterface::getPauseBackground()
 {
-	return m_MenuBackground;
+	return m_PauseBackground;
+}
+
+MainMenu UserInterface::getMenu()
+{
+	return m_MainMenu;
 }

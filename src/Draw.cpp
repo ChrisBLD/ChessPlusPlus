@@ -7,14 +7,20 @@ void Engine::draw()
 
 	if (state == State::MENU)
 	{
-		std::cout << "Menu State" << endl;
-		m_Window.draw(m_UI.getMenuBackground());
+		m_Window.draw(m_UI.getMenu().getMainMenuSprite());
+		m_Window.draw(m_UI.getMenu().getStartText());
+		m_Window.draw(m_UI.getMenu().getExitText());
 	}
 
-	if (state == State::WHITE_TURN || state == State::BLACK_TURN)
+	if (state == State::PLAYING)
 	{
-		std::cout << "Turn State" << endl;
+		//std::cout << "Turn State" << endl;
 		m_Window.draw(m_UI.getSpriteBoard());
+	}
+
+	if (state == State::PAUSED)
+	{
+		m_Window.draw(m_UI.getPauseBackground());
 	}
 	//m_Window.draw(m_UI.getSpriteBoard());
 

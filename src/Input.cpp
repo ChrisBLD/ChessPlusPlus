@@ -15,7 +15,16 @@ void Engine::input()
 
 			if (Keyboard::isKeyPressed(Keyboard::Return) && state == State::MENU)
 			{
-				state = State::WHITE_TURN;
+				state = State::PLAYING;
+			}
+
+			if (Keyboard::isKeyPressed(Keyboard::Escape) && state == State::PLAYING)
+			{
+				state = State::PAUSED;
+			}
+			else if (Keyboard::isKeyPressed(Keyboard::Escape) && state == State::PAUSED)
+			{
+				state = State::PLAYING;
 			}
 
 		}

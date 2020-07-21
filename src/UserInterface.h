@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "MainMenu.h"
 
 using namespace sf;
 
@@ -10,8 +11,11 @@ private:
 	//Screen resolution
 	Vector2f resolution;
 
-	//Sprite for menu background
-	Sprite m_MenuBackground;
+	//Main menu object
+	MainMenu m_MainMenu;
+
+	//Sprite for pause background
+	Sprite m_PauseBackground;
 
 	//Sprite for chess board:
 	Sprite m_SpriteBoard;
@@ -22,7 +26,9 @@ public:
 	UserInterface();
 
 	Sprite getSpriteBoard();
-	Sprite getMenuBackground();
+	Sprite getPauseBackground();
+
+	MainMenu getMenu();
 
 
 

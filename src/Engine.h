@@ -11,7 +11,7 @@ private:
 
 	//Game state enumeration
 	enum class State {
-		MENU, WHITE_TURN, BLACK_TURN, MID_TURN, CHECKMATE, PAUSED
+		MENU, PLAYING, MID_TURN, CHECKMATE, PAUSED
 	};
 
 	//Game state
