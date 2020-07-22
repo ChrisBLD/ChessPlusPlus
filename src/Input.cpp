@@ -26,7 +26,6 @@ void Engine::input()
 			{
 				state = State::PLAYING;
 			}
-
 		}
 	}
 }

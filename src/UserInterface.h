@@ -28,7 +28,7 @@ public:
 	Sprite getSpriteBoard();
 	Sprite getPauseBackground();
 
-	MainMenu getMenu();
+	MainMenu* getMenu();
 
 
 

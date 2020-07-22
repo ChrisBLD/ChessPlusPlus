@@ -32,14 +32,15 @@ void MainMenu::setStartText(String newText)
 	m_Start.setString(newText);
 }
 
-Text MainMenu::getStartText()
+
+Text* MainMenu::getStartText()
 {
-	return m_Start;
+	return &m_Start;
 }
 
-Text MainMenu::getExitText()
+Text* MainMenu::getExitText()
 {
-	return m_Exit;
+	return &m_Exit;
 }
 
 Sprite MainMenu::getMainMenuSprite()

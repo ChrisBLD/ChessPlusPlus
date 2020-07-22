@@ -30,8 +30,7 @@ public:
 	void init(Vector2f res);
 	void setStartText(String newText);
 
-
-	Text getStartText();
-	Text getExitText();
+	Text* getStartText();
+	Text* getExitText();
 	Sprite getMainMenuSprite();
 };

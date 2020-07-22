@@ -7,9 +7,11 @@ void Engine::draw()
 
 	if (state == State::MENU)
 	{
-		m_Window.draw(m_UI.getMenu().getMainMenuSprite());
-		m_Window.draw(m_UI.getMenu().getStartText());
-		m_Window.draw(m_UI.getMenu().getExitText());
+		//m_UI.getMenu()->getStartText()->setFillColor(Color::Red);
+		//Made text elements editable
+		m_Window.draw(m_UI.getMenu()->getMainMenuSprite());
+		m_Window.draw(*m_UI.getMenu()->getStartText());
+		m_Window.draw(*m_UI.getMenu()->getExitText());
 	}
 
 	if (state == State::PLAYING)

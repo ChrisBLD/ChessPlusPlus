@@ -28,7 +28,7 @@ Sprite UserInterface::getPauseBackground()
 	return m_PauseBackground;
 }
 
-MainMenu UserInterface::getMenu()
+MainMenu* UserInterface::getMenu()
 {
-	return m_MainMenu;
+	return &m_MainMenu;
 }
