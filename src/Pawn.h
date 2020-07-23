@@ -15,5 +15,5 @@ public:
 	//Capture handling done by parent Piece
 
 	//Piece-specific functionality 
-	bool canDoubleMove();
+	bool executeDoubleMove();
 };

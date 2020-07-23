@@ -156,6 +156,7 @@
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\Pawn.cpp" />
     <ClCompile Include="src\Piece.cpp" />
+    <ClCompile Include="src\Rook.cpp" />
     <ClCompile Include="src\TextureHolder.cpp" />
     <ClCompile Include="src\Update.cpp" />
     <ClCompile Include="src\UserInterface.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="src\MainMenu.h" />
     <ClInclude Include="src\Pawn.h" />
     <ClInclude Include="src\Piece.h" />
+    <ClInclude Include="src\Rook.h" />
     <ClInclude Include="src\TextureHolder.h" />
     <ClInclude Include="src\UserInterface.h" />
   </ItemGroup>

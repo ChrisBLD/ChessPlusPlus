@@ -23,13 +23,15 @@ void Pawn::spawn(Vector2i startPosition)
 
 	m_StartingPosition.x = startPosition.x;
 	m_StartingPosition.y = startPosition.y;
+
+	m_InPlay = true;
 }
 
 void Pawn::executeMoveNoCapture(bool dub)
 {
 	if (dub)
 	{
-		m_Position.y += 2;
+		executeDoubleMove();
 	}
 	else
 	{
@@ -45,16 +47,15 @@ void Pawn::executeMoveCapture(bool dir)
 		m_Position.x--;
 		m_Position.y++;
 	}
-}
-
-bool Pawn::canDoubleMove()
-{
-	if (m_StartingPosition.y == m_Position.y)
-	{
-		return true;
-	}
 	else
 	{
-		return false;
+		//Capture right
+		m_Position.x++;
+		m_Position.y++;
 	}
+}
+
+bool Pawn::executeDoubleMove()
+{
+	m_Position.y += 2;
 }
