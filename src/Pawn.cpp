@@ -4,58 +4,52 @@
 Pawn::Pawn()
 {
 	m_Sprite.setTexture(TextureHolder::GetTexture("assets/pawn.png"));
-
-	m_InPlay = false;
-
-	m_Movement.infiniteX = false;
-	m_Movement.infiniteY = false;
-	m_Movement.infiniteDiag = false;
-
-	m_Movement.normalX = 0;
-	m_Movement.normalY = 1;
-	m_Movement.normalDiag = 0;
+	m_State = PieceState::NOTSPAWNED;
 }
 
-void Pawn::spawn(Vector2i startPosition)
+
+void Pawn::executeMove(Directions direction, int steps, bool capture)
 {
-	m_Position.x = startPosition.x;
-	m_Position.y = startPosition.y;
+	//Capture: Move (+1,+1) in direction
+	if (capture)
+	{
+		switch (direction)
+		{
+		case Directions::NEAST:
+			m_NextPosition.y = m_Position.y + 1;
+			m_NextPosition.x = m_Position.x + 1;
+			break;
+		case Directions::NWEST:
+			m_NextPosition.y = m_Position.y + 1;
+			m_NextPosition.x = m_Position.x - 1;
+			break;
+		}
+	}
+	//No capture: Either move +2 from start or +1 normal
+	else {
+		if (steps == 2)
+		{
+			m_NextPosition.y = m_Position.y + 2;
+		}
+		else
+		{
+			m_NextPosition.y = m_Position.y + 1;
+		}
+	}
 
-	m_StartingPosition.x = startPosition.x;
-	m_StartingPosition.y = startPosition.y;
-
-	m_InPlay = true;
+	m_State = PieceState::MOVED;
 }
 
-void Pawn::executeMoveNoCapture(bool dub)
-{
-	if (dub)
-	{
-		executeDoubleMove();
-	}
-	else
-	{
-		m_Position.y++;
-	}
-}
 
-void Pawn::executeMoveCapture(bool dir)
+void Pawn::executeEnPassant(bool dir)
 {
 	if (dir)
 	{
-		//Capture left
-		m_Position.x--;
-		m_Position.y++;
+		executeMove(Directions::NWEST, 1, true);
 	}
 	else
 	{
-		//Capture right
-		m_Position.x++;
-		m_Position.y++;
+		executeMove(Directions::NEAST, 1, true);
 	}
-}
-
-bool Pawn::executeDoubleMove()
-{
-	m_Position.y += 2;
+	
 }

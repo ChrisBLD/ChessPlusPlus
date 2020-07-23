@@ -1,11 +1,11 @@
 #pragma once
 #include "Piece.h"
 
-class Rook : public Piece
+class King : public Piece
 {
 public:
 	//Constructor and basic spawn function
-	Rook();
+	King();
 
 	//Spawn function in parent Piece
 
@@ -16,4 +16,6 @@ public:
 
 	//Piece specific functionality
 	void executeCastle(bool dir);
+
+
 };

@@ -1,19 +1,16 @@
 #pragma once
 #include "Piece.h"
 
-class Rook : public Piece
+class Bishop : public Piece
 {
 public:
 	//Constructor and basic spawn function
-	Rook();
+	Bishop();
 
 	//Spawn function in parent Piece
 
-	//Move execution function. x = true, y = false
+	//Move execution function
 	void executeMove(Directions direction, int steps, bool capture);
 
 	//Capture handling done by parent Piece
-
-	//Piece specific functionality
-	void executeCastle(bool dir);
 };

@@ -4,39 +4,43 @@
 Rook::Rook()
 {
 	m_Sprite.setTexture(TextureHolder::GetTexture("assets/rook.png"));
-
-	m_InPlay = false;
+	m_State = PieceState::NOTSPAWNED;
 }
 
-void Rook::spawn(Vector2i startPosition)
+
+void Rook::executeMove(Directions direction, int steps, bool capture)
 {
-	m_Position.x = startPosition.x;
-	m_Position.y = startPosition.y;
+	switch (direction)
+	{
+	case Directions::NORTH:
+		m_NextPosition.y = m_Position.y + steps;
+		break;
+	case Directions::EAST:
+		m_NextPosition.x = m_Position.x + steps;
+		break;
+	case Directions::SOUTH:
+		m_NextPosition.y = m_Position.y - steps;
+		break;
+	case Directions::WEST:
+		m_NextPosition.x = m_Position.x - steps;
+	}
 
-	m_StartingPosition.x = startPosition.x;
-	m_StartingPosition.y = startPosition.y;
-
-	m_InPlay = true;
+	m_State = PieceState::MOVED;
 }
 
-void Rook::executeMove(bool dir, int steps)
+//Move the rook to the correct position in a castle move
+void Rook::executeCastle(bool dir)
 {
 	if (dir)
 	{
-		//Move in x direction
-		m_Position.x += steps;
+		//Queen side castle: move 3 to the right
+		m_NextPosition.x = m_Position.x + 3;
 	}
 	else
 	{
-		//Move in y direction
-		m_Position.y += steps;
+		//King side castle: move 2 to the left
+		m_NextPosition.x = m_Position.x - 2;
 	}
-}
 
-void Rook::executeCastle(Piece& king)
-{
-	Vector2i temp = king.getPosition();
-	king.setPosition(m_Position);
-	m_Position = temp;
-
+	m_State = PieceState::MOVED;
 }

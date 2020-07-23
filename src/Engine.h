@@ -2,18 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include "TextureHolder.h"
 #include "UserInterface.h"
+#include "Definitions.h"
 
 using namespace sf;
 
 class Engine
 {
 private:
-
-	//Game state enumeration
-	enum class State {
-		MENU, PLAYING, MID_TURN, CHECKMATE, PAUSED
-	};
-
 	//Game state
 	State state;
 

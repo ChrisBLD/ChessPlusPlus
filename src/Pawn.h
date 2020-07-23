@@ -6,14 +6,14 @@ class Pawn : public Piece
 public:
 	//Constructor and basic spawn function
 	Pawn();
-	void virtual spawn(Vector2i startPosition);
+	
+	//Spawn function in parent Piece
 
-	//Move execution functions
-	void executeMoveNoCapture(bool dub);
-	void executeMoveCapture(bool dir);
+	//Move execution function
+	void executeMove(Directions direction, int steps, bool capture);
 
 	//Capture handling done by parent Piece
 
 	//Piece-specific functionality 
-	bool executeDoubleMove();
+	void executeEnPassant(bool dir);
 };

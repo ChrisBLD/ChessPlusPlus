@@ -149,23 +149,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Bishop.cpp" />
     <ClCompile Include="src\Draw.cpp" />
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\Input.cpp" />
+    <ClCompile Include="src\King.cpp" />
+    <ClCompile Include="src\Knight.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\Pawn.cpp" />
     <ClCompile Include="src\Piece.cpp" />
+    <ClCompile Include="src\Queen.cpp" />
     <ClCompile Include="src\Rook.cpp" />
     <ClCompile Include="src\TextureHolder.cpp" />
     <ClCompile Include="src\Update.cpp" />
     <ClCompile Include="src\UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Bishop.h" />
+    <ClInclude Include="src\Definitions.h" />
     <ClInclude Include="src\Engine.h" />
+    <ClInclude Include="src\King.h" />
+    <ClInclude Include="src\Knight.h" />
     <ClInclude Include="src\MainMenu.h" />
     <ClInclude Include="src\Pawn.h" />
     <ClInclude Include="src\Piece.h" />
+    <ClInclude Include="src\Queen.h" />
     <ClInclude Include="src\Rook.h" />
     <ClInclude Include="src\TextureHolder.h" />
     <ClInclude Include="src\UserInterface.h" />
