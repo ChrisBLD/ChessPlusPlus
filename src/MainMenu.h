@@ -30,8 +30,8 @@ public:
 	void init(Vector2f res);
 	void setStartText(String newText);
 
-	void checkStartHovered();
-	void checkExitHovered();
+	bool checkStartHovered();
+	bool checkExitHovered();
 
 	Text* getStartText();
 	Text* getExitText();

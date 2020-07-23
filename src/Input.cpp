@@ -34,4 +34,18 @@ void Engine::input()
 			m_UI.getMenu()->checkExitHovered();
 		}
 	}
+
+	if (Mouse::isButtonPressed(Mouse::Left))
+	{
+		if (m_UI.getMenu()->checkStartHovered())
+		{
+			state = State::PLAYING;
+		}
+		if (m_UI.getMenu()->checkExitHovered())
+		{
+			m_Window.close();
+		}
+	}
+
+	
 }

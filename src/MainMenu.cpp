@@ -33,7 +33,7 @@ void MainMenu::setStartText(String newText)
 	m_Start.setString(newText);
 }
 
-void MainMenu::checkStartHovered()
+bool MainMenu::checkStartHovered()
 {
 	Vector2f mousePos = Vector2f(Mouse::getPosition().x, Mouse::getPosition().y);
 	FloatRect startRect = m_Start.getGlobalBounds();
@@ -41,14 +41,16 @@ void MainMenu::checkStartHovered()
 	if (startRect.contains(mousePos))
 	{
 		m_Start.setFillColor(Color::Red);
+		return true;
 	}
 	else
 	{
 		m_Start.setFillColor(Color::White);
+		return false;
 	}
 }
 
-void MainMenu::checkExitHovered()
+bool MainMenu::checkExitHovered()
 {
 	Vector2f mousePos = Vector2f(Mouse::getPosition().x, Mouse::getPosition().y);
 	FloatRect exitRect = m_Exit.getGlobalBounds();
@@ -56,10 +58,12 @@ void MainMenu::checkExitHovered()
 	if (exitRect.contains(mousePos))
 	{
 		m_Exit.setFillColor(Color::Red);
+		return true;
 	}
 	else
 	{
 		m_Exit.setFillColor(Color::White);
+		return false;
 	}
 }
 
