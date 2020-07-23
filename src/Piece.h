@@ -26,16 +26,22 @@ protected:
 	//The piece needs a tag for when it is in play or captured
 	bool m_InPlay;
 
-	//The piece needs a position
-	Vector2f m_Position;
+	//The piece needs a position - this is given as a position on the x-y axis starting at the bottom left of the board
+	Vector2i m_Position;
+
+	//We should also track the piece's starting position!
+	Vector2i m_StartingPosition;
 
 	//The piece's defined movement permissions
 	movement m_Movement;
 
 public:
 	//Pure virtual spawn function
-	void virtual spawn(Vector2f startPosition) = 0;
+	void virtual spawn(Vector2i startPosition) = 0;
 
-	Vector2f getPosition();
+	//Capture handler
+	void gotCaptured();
+
+	Vector2i getPosition();
 	Sprite getSprite();
 };

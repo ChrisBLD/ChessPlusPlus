@@ -16,7 +16,45 @@ Pawn::Pawn()
 	m_Movement.normalDiag = 0;
 }
 
-void Pawn::spawn(Vector2f startPosition)
+void Pawn::spawn(Vector2i startPosition)
 {
+	m_Position.x = startPosition.x;
+	m_Position.y = startPosition.y;
 
+	m_StartingPosition.x = startPosition.x;
+	m_StartingPosition.y = startPosition.y;
+}
+
+void Pawn::executeMoveNoCapture(bool dub)
+{
+	if (dub)
+	{
+		m_Position.y += 2;
+	}
+	else
+	{
+		m_Position.y++;
+	}
+}
+
+void Pawn::executeMoveCapture(bool dir)
+{
+	if (dir)
+	{
+		//Capture left
+		m_Position.x--;
+		m_Position.y++;
+	}
+}
+
+bool Pawn::canDoubleMove()
+{
+	if (m_StartingPosition.y == m_Position.y)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
