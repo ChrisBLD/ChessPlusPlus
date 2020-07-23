@@ -27,5 +27,11 @@ void Engine::input()
 				state = State::PLAYING;
 			}
 		}
+
+		if (event.type == Event::MouseMoved)
+		{
+			m_UI.getMenu()->checkStartHovered();
+			m_UI.getMenu()->checkExitHovered();
+		}
 	}
 }

@@ -30,6 +30,9 @@ public:
 	void init(Vector2f res);
 	void setStartText(String newText);
 
+	void checkStartHovered();
+	void checkExitHovered();
+
 	Text* getStartText();
 	Text* getExitText();
 	Sprite getMainMenuSprite();
