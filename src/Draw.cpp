@@ -23,6 +23,7 @@ void Engine::draw()
 	if (state == State::PAUSED)
 	{
 		m_Window.draw(m_UI.getPauseBackground());
+		m_Window.draw(*m_UI.getMenu()->getExitText());
 	}
 	//m_Window.draw(m_UI.getSpriteBoard());
 
