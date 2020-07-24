@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "TextureHolder.h"
 #include "UserInterface.h"
+#include "GameLogic.h"
 #include "Definitions.h"
 
 using namespace sf;
@@ -23,6 +24,9 @@ private:
 
 	//Create a UI object
 	UserInterface m_UI;
+
+	//Create a game logic object
+	GameLogic m_GL;
 
 	void input();
 	void update(float dtAsSeconds);

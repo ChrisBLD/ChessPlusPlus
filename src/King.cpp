@@ -3,7 +3,7 @@
 
 King::King()
 {
-	m_Sprite.setTexture(TextureHolder::GetTexture("assets/rook.png"));
+	m_Sprite.setTexture(TextureHolder::GetTexture("assets/king.png"));
 	m_State = PieceState::NOTSPAWNED;
 }
 

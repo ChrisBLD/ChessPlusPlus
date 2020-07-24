@@ -16,6 +16,7 @@ void Engine::input()
 			if (Keyboard::isKeyPressed(Keyboard::Return) && state == State::MENU)
 			{
 				state = State::PLAYING;
+				m_GL.startGame();
 			}
 
 			if (Keyboard::isKeyPressed(Keyboard::Escape) && state == State::PLAYING)
@@ -28,11 +29,18 @@ void Engine::input()
 			}
 		}
 
-		if (event.type == Event::MouseMoved)
+		if (event.type == Event::MouseMoved && state == State::MENU)
 		{
 			m_UI.getMenu()->checkStartHovered();
 			m_UI.getMenu()->checkExitHovered();
 		}
+
+		if (event.type == Event::MouseMoved && state == State::PLAYING)
+		{
+			m_GL.checkHovered();
+		}
+
+
 	}
 
 	if (Mouse::isButtonPressed(Mouse::Left))
@@ -40,6 +48,7 @@ void Engine::input()
 		if (m_UI.getMenu()->checkStartHovered())
 		{
 			state = State::PLAYING;
+			m_GL.startGame();
 		}
 		if (m_UI.getMenu()->checkExitHovered())
 		{

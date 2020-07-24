@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -152,6 +152,7 @@
     <ClCompile Include="src\Bishop.cpp" />
     <ClCompile Include="src\Draw.cpp" />
     <ClCompile Include="src\Engine.cpp" />
+    <ClCompile Include="src\GameLogic.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\King.cpp" />
     <ClCompile Include="src\Knight.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="src\Bishop.h" />
     <ClInclude Include="src\Definitions.h" />
     <ClInclude Include="src\Engine.h" />
+    <ClInclude Include="src\GameLogic.h" />
     <ClInclude Include="src\King.h" />
     <ClInclude Include="src\Knight.h" />
     <ClInclude Include="src\MainMenu.h" />

@@ -23,6 +23,18 @@ protected:
 	//We should also track the piece's starting position!
 	Vector2i m_StartingPosition;
 
+	//And a float position for smooth animation
+	Vector2f m_GlobalPosition;
+
+	//Fixed speed of piece animation
+	const float SPEED = 50.0f;
+
+	//Constant resolution
+	const Vector2f resolution = Vector2f(VideoMode::getDesktopMode().width, VideoMode::getDesktopMode().height);
+
+	//Starting position of board
+	const Vector2f boardPos = Vector2f(((resolution.x / 4.0f) + resolution.x / 2.0f)-(90*4)-60, (resolution.y / 2.0f) -(90 * 4) - 60);
+
 public:
 	//Pure virtual executeMove function
 	void virtual executeMove(Directions direction, int steps, bool capture) = 0;
@@ -34,11 +46,16 @@ public:
 	void gotCaptured();
 
 	//Animate movement of pieces
-	void animateMoves();
+	void animateMoves(float elapsedTime);
 
 	//Change position (castle)
 	void setPosition(Vector2i newPos);
 
+	void isHovered();
+
 	Vector2i getPosition();
+
+	Vector2f getGlobalPosition();
+
 	Sprite getSprite();
 };

@@ -18,6 +18,28 @@ void Engine::draw()
 	{
 		//std::cout << "Turn State" << endl;
 		m_Window.draw(m_UI.getSpriteBoard());
+		
+		for (int i = 0; i < 8; i++)
+		{
+			m_Window.draw(m_GL.whitePawn[i + 1].getSprite());
+			m_Window.draw(m_GL.blackPawn[i + 1].getSprite());
+			if (i < 2)
+			{
+				m_Window.draw(m_GL.whiteRook[i].getSprite());
+				m_Window.draw(m_GL.blackRook[i].getSprite());
+
+				m_Window.draw(m_GL.whiteKnight[i].getSprite());
+				m_Window.draw(m_GL.blackKnight[i].getSprite());
+
+				m_Window.draw(m_GL.whiteBishop[i].getSprite());
+				m_Window.draw(m_GL.blackBishop[i].getSprite());
+			}
+		}
+		m_Window.draw(m_GL.whiteKing.getSprite());
+		m_Window.draw(m_GL.whiteQueen[0].getSprite());
+
+		m_Window.draw(m_GL.blackKing.getSprite());
+		m_Window.draw(m_GL.blackQueen[0].getSprite());
 	}
 
 	if (state == State::PAUSED)

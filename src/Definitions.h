@@ -10,5 +10,9 @@ enum class Directions {
 
 //NOTMOVABLE used for when a check is in progress and this piece will not impact it.
 enum class PieceState {
-	MOVED, STATIONARY, CAPTURED, NOTSPAWNED, NOTMOVABLE
+	MOVED, STATIONARY, CAPTURED, NOTSPAWNED, NOTMOVABLE, HOVERED
+};
+
+enum class InGameState {
+	WHITE_TURN, BLACK_TURN, NOTPLAYING
 };
