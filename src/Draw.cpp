@@ -40,6 +40,17 @@ void Engine::draw()
 
 		m_Window.draw(m_GL.blackKing.getSprite());
 		m_Window.draw(m_GL.blackQueen[0].getSprite());
+
+		if (m_GL.whiteKing.getPieceState() == PieceState::HOVERED) {
+			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[0]);
+			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[1]);
+			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[2]);
+			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[3]);
+			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[4]);
+			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[5]);
+			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[6]);
+			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[7]);
+		}
 	}
 
 	if (state == State::PAUSED)

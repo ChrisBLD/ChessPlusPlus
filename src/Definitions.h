@@ -16,3 +16,7 @@ enum class PieceState {
 enum class InGameState {
 	WHITE_TURN, BLACK_TURN, NOTPLAYING
 };
+
+enum class Colour {
+	WHITE, BLACK, NONE
+};

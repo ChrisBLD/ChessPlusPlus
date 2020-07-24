@@ -31,3 +31,7 @@ void Bishop::executeMove(Directions direction, int steps, bool capture)
 
 	m_State = PieceState::MOVED;
 }
+
+void Bishop::showPossibleMoves(Colour** occupiedTiles)
+{
+}

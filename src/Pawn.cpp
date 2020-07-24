@@ -53,3 +53,7 @@ void Pawn::executeEnPassant(bool dir)
 	}
 	
 }
+
+void Pawn::showPossibleMoves(Colour** occupiedTiles)
+{
+}

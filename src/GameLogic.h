@@ -14,8 +14,8 @@ private:
 	//Define a game state for us to monitor turns
 	InGameState m_GameState = InGameState::NOTPLAYING;
 
-	//2D boolean array to track occupied tiles
-	bool** m_Occupied = new bool* [9];
+	//2D int array to track occupied tiles
+	Colour** m_Occupied = new Colour *[9];
 
 public:
 

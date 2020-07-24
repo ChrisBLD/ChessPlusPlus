@@ -1,7 +1,7 @@
 #include "Piece.h"
 #include <iostream>
 
-void Piece::spawn(Vector2i startPosition)
+void Piece::spawn(Vector2i startPosition, bool colour)
 {
 	m_Position.x = startPosition.x;
 	m_Position.y = startPosition.y;
@@ -14,6 +14,8 @@ void Piece::spawn(Vector2i startPosition)
 	m_GlobalPosition.x = boardPos.x + 60 + ((m_Position.x-1) * 90);
 	m_GlobalPosition.y = boardPos.y + 60 + ((8 - m_Position.y) * 90);
 	m_Sprite.setPosition(m_GlobalPosition);
+
+	m_Colour = (colour) ? Colour::WHITE : Colour::BLACK;
 }
 
 void Piece::gotCaptured()
@@ -50,15 +52,30 @@ void Piece::setPosition(Vector2i newPos)
 	m_Position.y = newPos.y;
 }
 
-void Piece::isHovered()
+bool Piece::isHovered()
 {
-	Vector2f mousePos = Vector2f(Mouse::getPosition().x, Mouse::getPosition().y);
+	if (m_State != PieceState::CAPTURED && m_State != PieceState::NOTMOVABLE && m_State != PieceState::NOTSPAWNED) {
+		Vector2f mousePos = Vector2f(Mouse::getPosition().x, Mouse::getPosition().y);
 
-	FloatRect pieceRect = FloatRect(m_GlobalPosition.x, m_GlobalPosition.y, 90, 90);
+		FloatRect pieceRect = FloatRect(m_GlobalPosition.x, m_GlobalPosition.y, 90, 90);
 
-	if (pieceRect.contains(mousePos)) {
-		std::cout << "PIECE BEING HOVERED OVER AT: (" << m_Position.x << ", " << m_Position.y << ")" << std::endl;
+		if (pieceRect.contains(mousePos) && m_State != PieceState::HOVERED) {
+			std::cout << "PIECE HOVERED: (" << m_Position.x << ", " << m_Position.y << ")" << std::endl;
+			m_State = PieceState::HOVERED;
+		}
+		else if (!pieceRect.contains(mousePos) && m_State == PieceState::HOVERED) {
+			std::cout << "PIECE UN-HOVERED: (" << m_Position.x << ", " << m_Position.y << ")" << std::endl;
+			m_State = PieceState::STATIONARY;
+		}
+		//std::cout << "PIECE AT: (" << m_Position.x << ", " << m_Position.y << ")" << std::endl;
 	}
+
+	if (m_State == PieceState::HOVERED)
+	{
+		return true;
+	}
+
+	return false;
 }
 
 

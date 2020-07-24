@@ -44,3 +44,7 @@ void Rook::executeCastle(bool dir)
 
 	m_State = PieceState::MOVED;
 }
+
+void Rook::showPossibleMoves(Colour** occupiedTiles)
+{
+}

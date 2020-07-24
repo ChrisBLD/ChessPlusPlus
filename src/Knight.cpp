@@ -59,3 +59,7 @@ void Knight::executeMove(Directions direction, int steps, bool capture)
 
 	m_State = PieceState::MOVED;
 }
+
+void Knight::showPossibleMoves(Colour** occupiedTiles)
+{
+}
