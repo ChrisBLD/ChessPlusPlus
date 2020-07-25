@@ -51,6 +51,17 @@ void Engine::draw()
 			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[6]);
 			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[7]);
 		}
+
+		for (int i = 1; i < 9; i++)
+		{
+			if (m_GL.whitePawn[i].getPieceState() == PieceState::HOVERED)
+			{
+				m_Window.draw(m_GL.whitePawn[i].getPossibleMoves()[0]);
+				m_Window.draw(m_GL.whitePawn[i].getPossibleMoves()[1]);
+				m_Window.draw(m_GL.whitePawn[i].getPossibleMoves()[2]);
+				m_Window.draw(m_GL.whitePawn[i].getPossibleMoves()[3]);
+			}
+		}
 	}
 
 	if (state == State::PAUSED)

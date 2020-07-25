@@ -44,8 +44,8 @@ protected:
 	//Constant for max and min values of x and y
 	const int MIN_X = boardPos.x;
 	const int MIN_Y = boardPos.y;
-	const int MAX_X = boardPos.x + (7 * TILE_SIZE);
-	const int MAX_Y = boardPos.y + (7 * TILE_SIZE);
+	const int MAX_X = boardPos.x + (8 * TILE_SIZE);
+	const int MAX_Y = boardPos.y + (8 * TILE_SIZE);
 
 
 public:

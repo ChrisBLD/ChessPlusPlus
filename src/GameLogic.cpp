@@ -26,9 +26,9 @@ void GameLogic::startGame()
 
 	for (int i = 1; i < 9; i++)
 	{
-		//whitePawn[i].spawn(Vector2i(i,2), true);
+		whitePawn[i].spawn(Vector2i(i,2), true);
 		blackPawn[i].spawn(Vector2i(i, 7), false);
-		//m_Occupied[i][2] = Colour::WHITE;
+		m_Occupied[i][2] = Colour::WHITE;
 		m_Occupied[i][7] = Colour::BLACK;
 	}
 
@@ -80,7 +80,10 @@ void GameLogic::checkHovered()
 	if (m_GameState == InGameState::WHITE_TURN) {
 		for (int i = 1; i < 9; i++)
 		{
-			whitePawn[i].isHovered();
+			if (whitePawn[i].isHovered())
+			{
+				whitePawn[i].showPossibleMoves(m_Occupied);
+			}
 		}
 		whiteRook[0].isHovered();
 		whiteRook[1].isHovered();
