@@ -26,9 +26,9 @@ void GameLogic::startGame()
 
 	for (int i = 1; i < 9; i++)
 	{
-		whitePawn[i].spawn(Vector2i(i,2), true);
+		//whitePawn[i].spawn(Vector2i(i,2), true);
 		blackPawn[i].spawn(Vector2i(i, 7), false);
-		m_Occupied[i][2] = Colour::WHITE;
+		//m_Occupied[i][2] = Colour::WHITE;
 		m_Occupied[i][7] = Colour::BLACK;
 	}
 
@@ -62,9 +62,9 @@ void GameLogic::startGame()
 	m_Occupied[6][1] = Colour::WHITE;
 	m_Occupied[6][8] = Colour::BLACK;
 
-	whiteKing.spawn(Vector2i(5, 1), true);
+	whiteKing.spawn(Vector2i(4, 6), true);
 	blackKing.spawn(Vector2i(5, 8), false);
-	m_Occupied[5][1] = Colour::WHITE;
+	m_Occupied[4][6] = Colour::WHITE;
 	m_Occupied[5][8] = Colour::BLACK;
 
 	whiteQueen[0].spawn(Vector2i(4, 1), true);
@@ -85,8 +85,14 @@ void GameLogic::checkHovered()
 				whitePawn[i].showPossibleMoves(m_Occupied);
 			}
 		}
-		whiteRook[0].isHovered();
-		whiteRook[1].isHovered();
+		if (whiteRook[0].isHovered())
+		{
+			whiteRook[0].showPossibleMoves(m_Occupied);
+		}
+		if (whiteRook[1].isHovered())
+		{
+			whiteRook[1].showPossibleMoves(m_Occupied);
+		}
 		whiteKnight[0].isHovered();
 		whiteKnight[1].isHovered();
 		whiteBishop[0].isHovered();

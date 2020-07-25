@@ -70,6 +70,9 @@ public:
 	//Is the piece being hovered over right now
 	bool isHovered();
 
+	//Find the furthest empty tile in a given direction
+	int furthestPointInDirection(Directions direction, Colour** occupiedTiles, Colour enemyColour);
+
 	Vector2i getPosition();
 
 	Vector2f getGlobalPosition();

@@ -47,4 +47,5 @@ void Queen::executeMove(Directions direction, int steps, bool capture)
 
 void Queen::showPossibleMoves(Colour** occupiedTiles)
 {
+
 }

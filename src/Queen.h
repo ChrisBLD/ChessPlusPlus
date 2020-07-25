@@ -3,6 +3,10 @@
 
 class Queen : public Piece
 {
+private:
+
+	
+
 public:
 	//Constructor and basic spawn function
 	Queen();

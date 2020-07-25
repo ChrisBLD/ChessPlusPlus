@@ -78,6 +78,92 @@ bool Piece::isHovered()
 	return false;
 }
 
+int Piece::furthestPointInDirection(Directions direction, Colour** occupiedTiles, Colour enemyColour)
+{
+	int x = m_Position.x;
+	int y = m_Position.y;
+
+	switch(direction)
+	{
+	case Directions::NORTH:
+		if (y == 8)
+		{
+			return y;
+		}
+		y++;
+		while (occupiedTiles[x][y] == Colour::NONE)
+		{
+			y++;
+			if (y == 9)
+			{
+				return 8;
+			}
+		}
+		if (occupiedTiles[x][y] == enemyColour)
+		{
+			return y;
+		}
+		return y-1;
+	case Directions::EAST:
+		if (x == 8)
+		{
+			return x;
+		}
+		x++;
+		while (occupiedTiles[x][y] == Colour::NONE)
+		{
+			x++;
+			if (x == 9)
+			{
+				return 8;
+			}
+		}
+		if (occupiedTiles[x][y] == enemyColour)
+		{
+			return x;
+		}
+		return x-1;
+	case Directions::SOUTH:
+		if (y == 1)
+		{
+			return y;
+		}
+		y--;
+		while (occupiedTiles[x][y] == Colour::NONE)
+		{
+			y--;
+			if (y == 0)
+			{
+				return 1;
+			}
+		}
+		if (occupiedTiles[x][y] == enemyColour)
+		{
+			return y;
+		}
+		return y+1;
+	case Directions::WEST:
+		if (x == 1)
+		{
+			return x;
+		}
+		x--;
+		while (occupiedTiles[x][y] == Colour::NONE)
+		{
+			x--;
+			if (x == 0)
+			{
+				return 1;
+			}
+		}
+		if (occupiedTiles[x][y] == enemyColour)
+		{
+			return x;
+		}
+		return x+1;
+	}
+}
+
 
 Vector2i Piece::getPosition()
 {

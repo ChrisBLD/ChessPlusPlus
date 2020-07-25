@@ -3,6 +3,10 @@
 
 class Rook : public Piece
 {
+private:
+
+	Sprite possibleMoves[4];
+
 public:
 	//Constructor and basic spawn function
 	Rook();
@@ -14,6 +18,12 @@ public:
 
 	//Show moves that can be made by this piece at this time
 	void showPossibleMoves(Colour** occupiedTiles);
+
+	//Get possible moves to display them on screen
+	Sprite* getPossibleMoves();
+
+	//Get current piece state
+	PieceState getPieceState();
 
 	//Capture handling done by parent Piece
 

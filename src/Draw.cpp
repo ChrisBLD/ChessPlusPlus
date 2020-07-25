@@ -62,6 +62,14 @@ void Engine::draw()
 				m_Window.draw(m_GL.whitePawn[i].getPossibleMoves()[3]);
 			}
 		}
+
+		if (m_GL.whiteRook[0].getPieceState() == PieceState::HOVERED)
+		{
+			m_Window.draw(m_GL.whiteRook[0].getPossibleMoves()[0]);
+			m_Window.draw(m_GL.whiteRook[0].getPossibleMoves()[1]);
+			m_Window.draw(m_GL.whiteRook[0].getPossibleMoves()[2]);
+			m_Window.draw(m_GL.whiteRook[0].getPossibleMoves()[3]);
+		}
 	}
 
 	if (state == State::PAUSED)
