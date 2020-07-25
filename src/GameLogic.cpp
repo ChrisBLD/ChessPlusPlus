@@ -95,8 +95,15 @@ void GameLogic::checkHovered()
 		}
 		whiteKnight[0].isHovered();
 		whiteKnight[1].isHovered();
-		whiteBishop[0].isHovered();
-		whiteBishop[1].isHovered();
+
+		if (whiteBishop[0].isHovered())
+		{
+			whiteBishop[0].showPossibleMoves(m_Occupied);
+		}
+		if (whiteBishop[1].isHovered())
+		{
+			whiteBishop[1].showPossibleMoves(m_Occupied);
+		}
 		if (whiteKing.isHovered()) {
 			whiteKing.showPossibleMoves(m_Occupied);
 		}

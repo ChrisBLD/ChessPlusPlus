@@ -42,33 +42,37 @@ void Engine::draw()
 		m_Window.draw(m_GL.blackQueen[0].getSprite());
 
 		if (m_GL.whiteKing.getPieceState() == PieceState::HOVERED) {
-			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[0]);
-			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[1]);
-			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[2]);
-			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[3]);
-			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[4]);
-			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[5]);
-			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[6]);
-			m_Window.draw(m_GL.whiteKing.getPossibleMoves()[7]);
+			for (int i = 0; i < 8; i++)
+			{
+				m_Window.draw(m_GL.whiteKing.getPossibleMoves()[i]);
+			}
 		}
 
 		for (int i = 1; i < 9; i++)
 		{
 			if (m_GL.whitePawn[i].getPieceState() == PieceState::HOVERED)
 			{
-				m_Window.draw(m_GL.whitePawn[i].getPossibleMoves()[0]);
-				m_Window.draw(m_GL.whitePawn[i].getPossibleMoves()[1]);
-				m_Window.draw(m_GL.whitePawn[i].getPossibleMoves()[2]);
-				m_Window.draw(m_GL.whitePawn[i].getPossibleMoves()[3]);
+				for (int j = 0; j < 4; j++)
+				{
+					m_Window.draw(m_GL.whitePawn[i].getPossibleMoves()[j]);
+				}
+			}
+		}
+
+		if (m_GL.whiteBishop[0].getPieceState() == PieceState::HOVERED)
+		{
+			for (int i = 0; i < 13; i++)
+			{
+				m_Window.draw(m_GL.whiteBishop[0].getPossibleMoves()[i]);
 			}
 		}
 
 		if (m_GL.whiteRook[0].getPieceState() == PieceState::HOVERED)
 		{
-			m_Window.draw(m_GL.whiteRook[0].getPossibleMoves()[0]);
-			m_Window.draw(m_GL.whiteRook[0].getPossibleMoves()[1]);
-			m_Window.draw(m_GL.whiteRook[0].getPossibleMoves()[2]);
-			m_Window.draw(m_GL.whiteRook[0].getPossibleMoves()[3]);
+			for (int i = 0; i < 4; i++)
+			{
+				m_Window.draw(m_GL.whiteRook[0].getPossibleMoves()[i]);
+			}
 		}
 	}
 

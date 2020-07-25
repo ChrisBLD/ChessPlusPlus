@@ -73,6 +73,8 @@ public:
 	//Find the furthest empty tile in a given direction
 	int furthestPointInDirection(Directions direction, Colour** occupiedTiles, Colour enemyColour);
 
+	Colour getEnemyColour();
+
 	Vector2i getPosition();
 
 	Vector2f getGlobalPosition();

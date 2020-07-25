@@ -48,16 +48,7 @@ void Rook::executeCastle(bool dir)
 
 void Rook::showPossibleMoves(Colour** occupiedTiles)
 {
-	Colour enemyColour;
-
-	if (m_Colour == Colour::WHITE)
-	{
-		enemyColour = Colour::BLACK;
-	}
-	else
-	{
-		enemyColour = Colour::WHITE;
-	}
+	Colour enemyColour = getEnemyColour();
 
 	//For axis moves, we will use a single position object and stretch it as required.
 	int furthestXLeft = furthestPointInDirection(Directions::WEST, occupiedTiles, enemyColour);

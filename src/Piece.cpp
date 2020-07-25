@@ -83,7 +83,7 @@ int Piece::furthestPointInDirection(Directions direction, Colour** occupiedTiles
 	int x = m_Position.x;
 	int y = m_Position.y;
 
-	switch(direction)
+	switch (direction)
 	{
 	case Directions::NORTH:
 		if (y == 8)
@@ -103,7 +103,7 @@ int Piece::furthestPointInDirection(Directions direction, Colour** occupiedTiles
 		{
 			return y;
 		}
-		return y-1;
+		return y - 1;
 	case Directions::EAST:
 		if (x == 8)
 		{
@@ -122,7 +122,7 @@ int Piece::furthestPointInDirection(Directions direction, Colour** occupiedTiles
 		{
 			return x;
 		}
-		return x-1;
+		return x - 1;
 	case Directions::SOUTH:
 		if (y == 1)
 		{
@@ -141,7 +141,7 @@ int Piece::furthestPointInDirection(Directions direction, Colour** occupiedTiles
 		{
 			return y;
 		}
-		return y+1;
+		return y + 1;
 	case Directions::WEST:
 		if (x == 1)
 		{
@@ -160,10 +160,43 @@ int Piece::furthestPointInDirection(Directions direction, Colour** occupiedTiles
 		{
 			return x;
 		}
-		return x+1;
+		return x + 1;
+
+
+	case Directions::NWEST:
+		if (y == 8 || x == 1) {
+			return y;
+		}
+		x--;
+		y++;
+		while (occupiedTiles[x][y] == Colour::NONE)
+		{
+			x--;
+			y++;
+			if (y == 9 || x == 0)
+			{
+				return 8;
+			}
+		}
+		if (occupiedTiles[x][y] == enemyColour)
+		{
+			return y;
+		}
+		return y--;
 	}
 }
 
+Colour Piece::getEnemyColour()
+{
+	if (m_Colour == Colour::WHITE)
+	{
+		return Colour::BLACK;
+	}
+	else
+	{
+		return Colour::WHITE;
+	}
+}
 
 Vector2i Piece::getPosition()
 {
