@@ -164,7 +164,8 @@ int Piece::furthestPointInDirection(Directions direction, Colour** occupiedTiles
 
 
 	case Directions::NWEST:
-		if (y == 8 || x == 1) {
+		if (y == 8 || x == 1)
+		{
 			return y;
 		}
 		x--;
@@ -174,6 +175,27 @@ int Piece::furthestPointInDirection(Directions direction, Colour** occupiedTiles
 			x--;
 			y++;
 			if (y == 9 || x == 0)
+			{
+				return 8;
+			}
+		}
+		if (occupiedTiles[x][y] == enemyColour)
+		{
+			return y;
+		}
+		return y--;
+	case Directions::NEAST:
+		if (y == 8 || x == 8)
+		{
+			return y;
+		}
+		x++;
+		y++;
+		while (occupiedTiles[x][y] == Colour::NONE)
+		{
+			x++;
+			y++;
+			if (y == 9 || x == 9)
 			{
 				return 8;
 			}

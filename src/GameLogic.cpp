@@ -52,9 +52,9 @@ void GameLogic::startGame()
 	m_Occupied[7][1] = Colour::WHITE;
 	m_Occupied[7][8] = Colour::BLACK;
 
-	whiteBishop[0].spawn(Vector2i(3, 1), true);
+	whiteBishop[0].spawn(Vector2i(4, 2), true);
 	blackBishop[0].spawn(Vector2i(3, 8), false);
-	m_Occupied[3][1] = Colour::WHITE;
+	m_Occupied[4][2] = Colour::WHITE;
 	m_Occupied[3][8] = Colour::BLACK;
 
 	whiteBishop[1].spawn(Vector2i(6, 1), true);
@@ -64,7 +64,7 @@ void GameLogic::startGame()
 
 	whiteKing.spawn(Vector2i(4, 6), true);
 	blackKing.spawn(Vector2i(5, 8), false);
-	m_Occupied[4][6] = Colour::WHITE;
+	m_Occupied[5][1] = Colour::WHITE;
 	m_Occupied[5][8] = Colour::BLACK;
 
 	whiteQueen[0].spawn(Vector2i(4, 1), true);
