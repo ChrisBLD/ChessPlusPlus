@@ -214,18 +214,18 @@ int Piece::furthestPointInDirection(Directions direction, Colour** occupiedTiles
 		y--;
 		while (occupiedTiles[x][y] == Colour::NONE)
 		{
-			x++;
-			y--;
 			if (y == 0 || x == 9)
 			{
 				return y;
 			}
+			x++;
+			y--;
 		}
 		if (occupiedTiles[x][y] == enemyColour)
 		{
 			return y;
 		}
-		return y++;
+		return y+1;
 	}
 }
 
