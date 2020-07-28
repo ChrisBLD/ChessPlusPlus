@@ -38,10 +38,19 @@ void Engine::draw()
 		m_Window.draw(m_GL.whiteKing.getSprite());
 		m_Window.draw(m_GL.whiteQueen[0].getSprite());
 
+		if (m_GL.whiteQueen[0].getPieceState() == PieceState::HOVERED) 
+		{
+			for (int i = 0; i < 15; i++)
+			{
+				m_Window.draw(m_GL.whiteQueen[0].getPossibleMoves()[i]);
+			}
+		}
+
 		m_Window.draw(m_GL.blackKing.getSprite());
 		m_Window.draw(m_GL.blackQueen[0].getSprite());
 
-		if (m_GL.whiteKing.getPieceState() == PieceState::HOVERED) {
+		if (m_GL.whiteKing.getPieceState() == PieceState::HOVERED)
+		{
 			for (int i = 0; i < 8; i++)
 			{
 				m_Window.draw(m_GL.whiteKing.getPossibleMoves()[i]);

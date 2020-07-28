@@ -104,10 +104,14 @@ void GameLogic::checkHovered()
 		{
 			whiteBishop[1].showPossibleMoves(m_Occupied);
 		}
-		if (whiteKing.isHovered()) {
+		if (whiteKing.isHovered())
+		{
 			whiteKing.showPossibleMoves(m_Occupied);
 		}
-		whiteQueen[0].isHovered();
+		if (whiteQueen[0].isHovered()) 
+		{
+			whiteQueen[0].showPossibleMoves(m_Occupied);
+		}
 	} 
 	else if (m_GameState == InGameState::BLACK_TURN)
 	{

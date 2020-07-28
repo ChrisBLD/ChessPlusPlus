@@ -358,7 +358,6 @@ void Piece::buildAxisPaths(Colour** occupiedTiles, Colour enemyColour, Sprite* p
 	}
 }
 
-
 Colour Piece::getEnemyColour()
 {
 	if (m_Colour == Colour::WHITE)

@@ -47,5 +47,29 @@ void Queen::executeMove(Directions direction, int steps, bool capture)
 
 void Queen::showPossibleMoves(Colour** occupiedTiles)
 {
+	Colour enemyColour = getEnemyColour();
 
+	buildDiagonalPaths(occupiedTiles, enemyColour, possibleMovesDiag);
+	buildAxisPaths(occupiedTiles, enemyColour, possibleMovesAxis);
+
+	for (int i = 0; i < 13; i++)
+	{
+		possibleMoves[i] = possibleMovesDiag[i];
+	}
+
+	possibleMoves[13] = possibleMovesAxis[0];
+	possibleMoves[14] = possibleMovesAxis[1];
+	possibleMoves[15] = possibleMovesAxis[2];
+	possibleMoves[16] = possibleMovesAxis[3];
+
+}
+
+Sprite* Queen::getPossibleMoves()
+{
+	return possibleMoves;
+}
+
+PieceState Queen::getPieceState()
+{
+	return m_State;
 }
