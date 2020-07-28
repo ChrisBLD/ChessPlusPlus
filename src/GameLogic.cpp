@@ -52,9 +52,9 @@ void GameLogic::startGame()
 	m_Occupied[7][1] = Colour::WHITE;
 	m_Occupied[7][8] = Colour::BLACK;
 
-	whiteBishop[0].spawn(Vector2i(3, 3), true);
+	whiteBishop[0].spawn(Vector2i(5, 5), true);
 	blackBishop[0].spawn(Vector2i(3, 8), false);
-	m_Occupied[3][3] = Colour::WHITE;
+	m_Occupied[5][5] = Colour::WHITE;
 	m_Occupied[3][8] = Colour::BLACK;
 
 	whiteBishop[1].spawn(Vector2i(6, 1), true);

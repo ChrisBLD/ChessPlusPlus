@@ -82,6 +82,20 @@ void Bishop::showPossibleMoves(Colour** occupiedTiles)
 			possibleMoves[i].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
 		}
 	}
+
+	currentElement += furthestSE + m_Position.y;
+
+	for (int i = currentElement; i < (currentElement + m_Position.y - furthestSW); i++)
+	{
+		int localX = m_GlobalPosition.x - (TILE_SIZE * (i - currentElement + 1));
+		int localY = m_GlobalPosition.y + (TILE_SIZE * (i - currentElement + 1));
+
+		if (!(localX > MAX_X) && !(localX < MIN_X) && !(localY > MAX_Y) && !(localY < MIN_Y) && m_Position.y)
+		{
+			possibleMoves[i].setPosition(localX, localY);
+			possibleMoves[i].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
+		}
+	}
 }
 
 
