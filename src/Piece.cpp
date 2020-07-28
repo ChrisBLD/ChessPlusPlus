@@ -251,6 +251,114 @@ int Piece::furthestPointInDirection(Directions direction, Colour** occupiedTiles
 
 }
 
+void Piece::buildDiagonalPaths(Colour** occupiedTiles, Colour enemyColour, Sprite* possibleMoves)
+{
+	//For a diagonal move, we will have to use individual sprites
+	int furthestNE = furthestPointInDirection(Directions::NEAST, occupiedTiles, enemyColour);
+	int furthestNW = furthestPointInDirection(Directions::NWEST, occupiedTiles, enemyColour);
+	int furthestSW = furthestPointInDirection(Directions::SWEST, occupiedTiles, enemyColour);
+	int furthestSE = furthestPointInDirection(Directions::SEAST, occupiedTiles, enemyColour);
+
+	int currentElement = furthestNW - m_Position.y;
+
+	for (int i = 0; i < currentElement; i++)
+	{
+		int localX = m_GlobalPosition.x - (TILE_SIZE * (i + 1));
+		int localY = m_GlobalPosition.y - (TILE_SIZE * (i + 1));
+
+		if (!(localX > MAX_X) && !(localX < MIN_X) && !(localY > MAX_Y) && !(localY < MIN_Y) && m_Position.y)
+		{
+			possibleMoves[i].setPosition(localX, localY);
+			possibleMoves[i].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
+		}
+	}
+
+
+	for (int i = currentElement; i < (currentElement + furthestNE - m_Position.y); i++)
+	{
+		int localX = m_GlobalPosition.x + (TILE_SIZE * (i - currentElement + 1));
+		int localY = m_GlobalPosition.y - (TILE_SIZE * (i - currentElement + 1));
+
+		if (!(localX > MAX_X) && !(localX < MIN_X) && !(localY > MAX_Y) && !(localY < MIN_Y) && m_Position.y)
+		{
+			possibleMoves[i].setPosition(localX, localY);
+			possibleMoves[i].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
+		}
+	}
+
+	currentElement += furthestNE - m_Position.y;
+
+	for (int i = currentElement; i < (currentElement + m_Position.y - furthestSE); i++)
+	{
+		int localX = m_GlobalPosition.x + (TILE_SIZE * (i - currentElement + 1));
+		int localY = m_GlobalPosition.y + (TILE_SIZE * (i - currentElement + 1));
+
+		if (!(localX > MAX_X) && !(localX < MIN_X) && !(localY > MAX_Y) && !(localY < MIN_Y) && m_Position.y)
+		{
+			possibleMoves[i].setPosition(localX, localY);
+			possibleMoves[i].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
+		}
+	}
+
+	currentElement += furthestSE + m_Position.y;
+
+	for (int i = currentElement; i < (currentElement + m_Position.y - furthestSW); i++)
+	{
+		int localX = m_GlobalPosition.x - (TILE_SIZE * (i - currentElement + 1));
+		int localY = m_GlobalPosition.y + (TILE_SIZE * (i - currentElement + 1));
+
+		if (!(localX > MAX_X) && !(localX < MIN_X) && !(localY > MAX_Y) && !(localY < MIN_Y) && m_Position.y)
+		{
+			possibleMoves[i].setPosition(localX, localY);
+			possibleMoves[i].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
+		}
+	}
+}
+
+void Piece::buildAxisPaths(Colour** occupiedTiles, Colour enemyColour, Sprite* possibleMoves)
+{
+	//For axis moves, we will use a single position object and stretch it as required.
+	int furthestXLeft = furthestPointInDirection(Directions::WEST, occupiedTiles, enemyColour);
+	int furthestXRight = furthestPointInDirection(Directions::EAST, occupiedTiles, enemyColour);
+	int furthestYUp = furthestPointInDirection(Directions::NORTH, occupiedTiles, enemyColour);
+	int furthestYDown = furthestPointInDirection(Directions::SOUTH, occupiedTiles, enemyColour);
+
+	std::cout << furthestXLeft << " " << furthestXRight << " " << furthestYUp << " " << furthestYDown << endl;
+
+	if (furthestXLeft != m_Position.x)
+	{
+		int diff = m_Position.x - furthestXLeft;
+		possibleMoves[0].setPosition(m_GlobalPosition.x - (TILE_SIZE * diff), m_GlobalPosition.y);
+		possibleMoves[0].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
+		possibleMoves[0].setScale(diff, 1.0f);
+	}
+
+	if (furthestXRight != m_Position.x)
+	{
+		int diff = furthestXRight - m_Position.x;
+		possibleMoves[1].setPosition(m_GlobalPosition.x + TILE_SIZE, m_GlobalPosition.y);
+		possibleMoves[1].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
+		possibleMoves[1].setScale(diff, 1.0f);
+	}
+
+	if (furthestYUp != m_Position.y)
+	{
+		int diff = furthestYUp - m_Position.y;
+		possibleMoves[2].setPosition(m_GlobalPosition.x, m_GlobalPosition.y - (TILE_SIZE * diff));
+		possibleMoves[2].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
+		possibleMoves[2].setScale(1.0f, diff);
+	}
+
+	if (furthestYDown != m_Position.y)
+	{
+		int diff = m_Position.y - furthestYDown;
+		possibleMoves[3].setPosition(m_GlobalPosition.x, m_GlobalPosition.y + TILE_SIZE);
+		possibleMoves[3].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
+		possibleMoves[3].setScale(1.0f, diff);
+	}
+}
+
+
 Colour Piece::getEnemyColour()
 {
 	if (m_Colour == Colour::WHITE)

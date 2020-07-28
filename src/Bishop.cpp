@@ -36,66 +36,7 @@ void Bishop::showPossibleMoves(Colour** occupiedTiles)
 {
 	Colour enemyColour = getEnemyColour();
 
-	//For a diagonal move, we will have to use individual sprites
-	int furthestNE = furthestPointInDirection(Directions::NEAST, occupiedTiles, enemyColour);
-	int furthestNW = furthestPointInDirection(Directions::NWEST, occupiedTiles, enemyColour);
-	int furthestSW = furthestPointInDirection(Directions::SWEST, occupiedTiles, enemyColour);
-	int furthestSE = furthestPointInDirection(Directions::SEAST, occupiedTiles, enemyColour);
-
-	int currentElement = furthestNW - m_Position.y;
-
-	for (int i = 0; i < currentElement; i++)
-	{
-		int localX = m_GlobalPosition.x - (TILE_SIZE * (i+1));
-		int localY = m_GlobalPosition.y - (TILE_SIZE * (i+1));
-
-		if (!(localX > MAX_X) && !(localX < MIN_X) && !(localY > MAX_Y) && !(localY < MIN_Y) && m_Position.y)
-		{
-			possibleMoves[i].setPosition(localX, localY);
-			possibleMoves[i].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
-		}
-	}
-
-
-	for (int i = currentElement; i < (currentElement + furthestNE - m_Position.y); i++)
-	{
-		int localX = m_GlobalPosition.x + (TILE_SIZE * (i - currentElement + 1));
-		int localY = m_GlobalPosition.y - (TILE_SIZE * (i - currentElement + 1));
-
-		if (!(localX > MAX_X) && !(localX < MIN_X) && !(localY > MAX_Y) && !(localY < MIN_Y) && m_Position.y)
-		{
-			possibleMoves[i].setPosition(localX, localY);
-			possibleMoves[i].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
-		}
-	}
-
-	currentElement += furthestNE - m_Position.y;
-
-	for (int i = currentElement; i < (currentElement + m_Position.y - furthestSE); i++)
-	{
-		int localX = m_GlobalPosition.x + (TILE_SIZE * (i - currentElement + 1));
-		int localY = m_GlobalPosition.y + (TILE_SIZE * (i - currentElement + 1));
-
-		if (!(localX > MAX_X) && !(localX < MIN_X) && !(localY > MAX_Y) && !(localY < MIN_Y) && m_Position.y)
-		{
-			possibleMoves[i].setPosition(localX, localY);
-			possibleMoves[i].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
-		}
-	}
-
-	currentElement += furthestSE + m_Position.y;
-
-	for (int i = currentElement; i < (currentElement + m_Position.y - furthestSW); i++)
-	{
-		int localX = m_GlobalPosition.x - (TILE_SIZE * (i - currentElement + 1));
-		int localY = m_GlobalPosition.y + (TILE_SIZE * (i - currentElement + 1));
-
-		if (!(localX > MAX_X) && !(localX < MIN_X) && !(localY > MAX_Y) && !(localY < MIN_Y) && m_Position.y)
-		{
-			possibleMoves[i].setPosition(localX, localY);
-			possibleMoves[i].setTexture(TextureHolder::GetTexture("assets/validmove.png"));
-		}
-	}
+	buildDiagonalPaths(occupiedTiles, enemyColour, possibleMoves);
 }
 
 

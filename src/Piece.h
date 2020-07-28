@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Definitions.h"
+#include "TextureHolder.h"
 
 using namespace sf;
 
@@ -72,6 +73,12 @@ public:
 
 	//Find the furthest empty tile in a given direction
 	int furthestPointInDirection(Directions direction, Colour** occupiedTiles, Colour enemyColour);
+
+	//Build a path of moves in all four diagonal directions
+	void buildDiagonalPaths(Colour** occupiedTiles, Colour enemyColour, Sprite* possibleMoves);
+
+	//Build a path of moves in both axis directions
+	void buildAxisPaths(Colour** occupiedTiles, Colour enemyColour, Sprite* possibleMoves);
 
 	Colour getEnemyColour();
 
